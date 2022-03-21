@@ -1,0 +1,73 @@
+class Main {
+  public static int selection(int[] arr)
+  {
+    int count =0;
+    for(int i=0; i<arr.length; i++)
+    {
+      int min = i;
+      for(int j=i; j<arr.length; j++)
+      {
+        if(arr[j]<arr[i]) {
+          min = j;
+          count++; // count # of loop executions
+          }
+      }
+      int tmp = arr[i];
+      arr[i] = arr[min];
+      arr[min] = tmp;
+    } 
+    return count;
+  }
+  public static int insertion(int[] arr)
+  {
+    int count = 0;
+    for(int i=1; i<arr.length; i++)
+    {
+      int next = arr[i];
+      int j = i-1;
+      while(j>=0 && arr[j]>next)
+      {
+        arr[j+1] = arr[j];
+        j--;
+        count++; // count # of loop executions
+      }
+      arr[j+1] = next;
+      
+    }
+    return count;
+    
+  }
+  public static void main(String[] args) {
+    int[] arr = new int[10];
+    int[] arr2 = new int[100];
+    for(int i=0; i<arr.length; i++)
+    {
+      arr[i] = (int)(Math.random()*10);
+    }
+    for(int i=0; i<arr2.length; i++)
+    {
+      arr2[i] = (int)(Math.random()*10);
+    }
+    System.out.println("arr1 selection count: "+selection(arr));
+    System.out.println("arr2 selection count: "+selection(arr2));
+    for(int i=0; i<arr.length; i++)
+    {
+      arr[i] = (int)(Math.random()*10);
+    }
+    for(int i=0; i<arr2.length; i++)
+    {
+      arr2[i] = (int)(Math.random()*10);
+    }
+    System.out.println("arr1 insertion count: "+insertion(arr)); 
+    System.out.println("arr2 insertion count: "+insertion(arr2)); 
+    
+
+   
+      
+    
+    
+    
+    
+    
+  }
+}
